@@ -7,7 +7,7 @@ void freeMemory(float** matrix, int rows);
 float random_number(int min, int max);
 void createMatrix(float** matrix, int rows, int cols);
 void printtMatrix(float** matrix, int rows, int cols);
-//handle]
+//handle
 void swap(float &a, float &b);
 void swap_row(float** matrix, int row1, int row2, int cols);
 void eliminate(float** matrix, int base, int row, int cols);
@@ -17,14 +17,14 @@ void main()
 {
 	srand((int)time(0));
 	int rows, cols;
-    printf("Rows, Cols: ");
-    scanf_s("%d %d", &rows, &cols);
+    	printf("Rows, Cols: ");
+   	 scanf_s("%d %d", &rows, &cols);
 	float **matrix = initialize(rows, cols);
 	createMatrix(matrix, rows, cols);
 	clock_t begin = clock();
 	handle(matrix, rows, cols);
 	clock_t end = clock();
-	//printtMatrix(matrix, rows, cols);
+	printtMatrix(matrix, rows, cols);
 	freeMemory(matrix, rows);
 	printf("Time run: %gs\n", (float)(end-begin)/CLOCKS_PER_SEC);
 	system("pause>0");
