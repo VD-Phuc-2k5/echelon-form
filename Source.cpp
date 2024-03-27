@@ -21,9 +21,12 @@ void main()
     scanf_s("%d %d", &rows, &cols);
 	float **matrix = initialize(rows, cols);
 	createMatrix(matrix, rows, cols);
+	clock_t begin = clock();
 	handle(matrix, rows, cols);
-	printtMatrix(matrix, rows, cols);
+	clock_t end = clock();
+	//printtMatrix(matrix, rows, cols);
 	freeMemory(matrix, rows);
+	printf("Time run: %gs\n", (float)(end-begin)/CLOCKS_PER_SEC);
 	system("pause>0");
 }
 
