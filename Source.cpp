@@ -21,6 +21,8 @@ void main()
    	 scanf_s("%d %d", &rows, &cols);
 	float **matrix = initialize(rows, cols);
 	createMatrix(matrix, rows, cols);
+	printtMatrix(matrix, rows, cols);
+	printf("\n");
 	clock_t begin = clock();
 	handle(matrix, rows, cols);
 	clock_t end = clock();
