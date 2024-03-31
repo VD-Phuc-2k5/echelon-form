@@ -117,9 +117,9 @@ void convert_to_echelon_form(float** matrix, int rows, int cols)
 			eliminate(matrix, i, rows, cols);
 		else
 		{
-			while(matrix[j][i] == 0 && j < rows)
+			while(matrix[j][i] == 0 && j < rows - 1)
 				++j;
-			if (j < rows) 
+			if (j < rows - 1) 
 			{
 				swap_row(matrix, i, j, cols);
 				eliminate(matrix, i, rows, cols);
