@@ -11,7 +11,7 @@ void printtMatrix(float** matrix, int rows, int cols);
 void swap(float &a, float &b);
 void swap_row(float** matrix, int row1, int row2, int cols);
 void eliminate(float** matrix, int base, int row, int cols);
-void handle(float** matrix, int row1s, int cols);
+void convert_to_echelon_form(float** matrix, int rows, int cols);
 
 void main()
 {
@@ -24,7 +24,7 @@ void main()
 	printtMatrix(matrix, rows, cols);
 	printf("\n");
 	clock_t begin = clock();
-	handle(matrix, rows, cols);
+	convert_to_echelon_form(matrix, rows, cols);
 	clock_t end = clock();
 	printtMatrix(matrix, rows, cols);
 	freeMemory(matrix, rows);
@@ -35,16 +35,16 @@ void main()
 float** initialize(int rows, int cols)
 {
 	float **matrix = new float *[rows];
-    for (int i = 0; i < rows; ++i)
-        matrix[i] = new float[cols]();
+	for (int i = 0; i < rows; ++i)
+		matrix[i] = new float[cols]();
 	return matrix;
 }
 void freeMemory(float** matrix, int rows)
 {
 	for (int i = 0; i < rows; ++i)
-        delete[] matrix[i];
-    delete matrix;
-    matrix = NULL;
+		delete[] matrix[i];
+	delete matrix;
+	matrix = NULL;
 }
 float random_number(int min, int max)
 {
@@ -88,26 +88,6 @@ void eliminate(float** matrix, int base, int rows,  int cols)
 			matrix[i][j] -= c*matrix[base][j];
 	}
 }
-void handle(float** matrix, int rows, int cols)
-{
-	for (int i = 0; i < rows - 1; i++)
-	{
-		int j = i;
-		if (matrix[j][i] != 0)
-			eliminate(matrix, i, rows, cols);
-		else
-		{
-			while(matrix[j][i] == 0 && j < rows)
-				++j;
-			if (j < rows) 
-			{
-				swap_row(matrix, i, j, cols);
-				eliminate(matrix, i, rows, cols);
-			}
-		}
-	}
-}
-
 void convert_to_echelon_form(float** matrix, int rows, int cols)
 {
 	for (int i = 0; i < rows - 1; i++)
